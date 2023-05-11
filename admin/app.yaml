@@ -1,0 +1,16 @@
+runtime: nodejs14
+
+handlers:
+  # Menangani permintaan untuk path '/' dengan file index.html
+  - url: /
+    static_files: build/index.html
+    upload: build/index.html
+
+  # Menangani permintaan untuk semua file di dalam folder 'static'
+  - url: /
+    static_dir: build/static
+
+  # Menangani permintaan untuk file lainnya
+  - url: /(.*\..+)$
+    static_files: build/\1
+    upload: build/(.*\..+)$
